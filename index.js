@@ -7,6 +7,8 @@ const admin = '79108257989@c.us'
 const igor = '79611601191@c.us'
 const katya = '79301200905@c.us'
 
+const superadmin = '79884054121@c.us'
+
 function getStopWords() {
     return fs.readFileSync('./test.txt', 'utf8').toString().split('\n')
 }
@@ -65,20 +67,24 @@ client.on('message', message => {
     
     if (is_message) {
         if (message.from === katya) {
+            console.log('message.from', katya)
             if (checkWordIsStop(message.body)) {
                 client.sendMessage(admin, 'ATTENTION!!! stop word from Katya in message: ' + message.body);
+                client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
                 let mess = 'Katya: ' + message.body
                 client.sendMessage(igor, mess);
 
-                client.sendMessage('79884054121@c.us', mess);
+                client.sendMessage(superadmin, mess);
             }
 
         }
         else if (message.from === igor) {
+            console.log('message.from', igor)
             if (checkWordIsStop(message.body)) {
                 client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ', message.body);
+                client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
                 let mess = 'Igor: ' + message.body
