@@ -1,0 +1,34 @@
+2023/09/04-15:53:33.230 327c Creating DB C:\dev\whatsappbot\ws_bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb since it was missing.
+2023/09/04-15:53:33.247 327c Reusing MANIFEST C:\dev\whatsappbot\ws_bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/09/04-15:53:33.400 a14 Level-0 table #5: started
+2023/09/04-15:53:33.410 a14 Level-0 table #5: 7473 bytes OK
+2023/09/04-15:53:33.415 a14 Delete type=0 #3
+2023/09/04-15:53:33.428 a14 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/09/04-15:53:35.274 a14 Level-0 table #7: started
+2023/09/04-15:53:35.289 a14 Level-0 table #7: 19863 bytes OK
+2023/09/04-15:53:35.295 a14 Delete type=0 #4
+2023/09/04-15:53:35.298 a14 Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/09/04-16:01:45.976 2358 Level-0 table #9: started
+2023/09/04-16:01:46.013 2358 Level-0 table #9: 1009335 bytes OK
+2023/09/04-16:01:46.018 2358 Delete type=0 #6
+2023/09/04-16:01:46.038 34ac Compacting 1@0 + 1@1 files
+2023/09/04-16:01:46.105 34ac Generated table #10@0: 31653 keys, 670765 bytes
+2023/09/04-16:01:46.105 34ac Compacted 1@0 + 1@1 files => 670765 bytes
+2023/09/04-16:01:46.109 34ac compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/09/04-16:02:27.115 2358 Level-0 table #12: started
+2023/09/04-16:02:27.154 2358 Level-0 table #12: 1002092 bytes OK
+2023/09/04-16:02:27.160 2358 Delete type=2 #7
+2023/09/04-16:02:27.160 2358 Delete type=0 #8
+2023/09/04-16:02:27.160 2358 Delete type=2 #9
+2023/09/04-16:02:27.170 34ac Compacting 1@0 + 1@1 files
+2023/09/04-16:02:27.271 34ac Generated table #13@0: 50894 keys, 1282275 bytes
+2023/09/04-16:02:27.271 34ac Compacted 1@0 + 1@1 files => 1282275 bytes
+2023/09/04-16:02:27.276 34ac compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/09/04-16:14:42.753 3bbc Compacting 1@1 + 1@2 files
+2023/09/04-16:14:42.862 3bbc Generated table #14@1: 22999 keys, 1054854 bytes
+2023/09/04-16:14:42.863 3bbc Compacted 1@1 + 1@2 files => 1054854 bytes
+2023/09/04-16:14:42.866 3bbc compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/09/04-16:14:42.869 3bbc Delete type=2 #5
+2023/09/04-16:14:42.870 3bbc Delete type=2 #10
+2023/09/04-16:14:42.870 3bbc Delete type=2 #12
+2023/09/04-16:14:42.871 3bbc Delete type=2 #13
