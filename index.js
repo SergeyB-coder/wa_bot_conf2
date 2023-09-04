@@ -42,6 +42,15 @@ const client = new Client(
     }
 );
 
+async function checkMedia (message, to) {
+    if(message.hasMedia) {
+        const media = await message.downloadMedia();
+        client.sendMessage(to, media);
+        client.sendMessage(superadmin, media);
+    }
+
+}
+
 client.on('qr', qr => {
     qrcode.generate(qr, { small: true });
 });
@@ -67,6 +76,7 @@ client.on('message', message => {
     
     if (is_message) {
         if (message.from === katya) {
+            checkMedia(message, igor)
             console.log('message.from', katya)
             if (checkWordIsStop(message.body)) {
                 client.sendMessage(admin, 'ATTENTION!!! stop word from Katya in message: ' + message.body);
@@ -81,6 +91,7 @@ client.on('message', message => {
 
         }
         else if (message.from === igor) {
+            checkMedia(message, katya)
             console.log('message.from', igor)
             if (checkWordIsStop(message.body)) {
                 client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ', message.body);
