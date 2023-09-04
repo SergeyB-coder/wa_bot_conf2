@@ -19,7 +19,7 @@ function checkWordIsStop(message) {
     console.log('checkWordIsStop', stop_words)
     let no_stop = true
     stop_words.forEach((word, index) => {
-        no_stop = no_stop && !message.toLowerCase().includes(word)
+        if (word !== '')  no_stop = no_stop && !message.toLowerCase().includes(word)
         console.log('check word ', word, no_stop)
     });
     return !no_stop
