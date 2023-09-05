@@ -9,13 +9,14 @@ const igor = '79611601191@c.us'
 const katya = '79301200905@c.us'
 const serg = '79024050778@c.us'
 
-const superadmin = '79884054121@c.us'
+const superadmin = '79024050778@c.us'
 
 function getStopWords() {
     return fs.readFileSync('./test.txt', 'utf8').toString().split('\n')
 }
 
 function checkWordIsStop(message) {
+    let stop_word = ''
     console.log('checkWordIsStop', message)
     const stop_words = getStopWords()
     console.log('checkWordIsStop', stop_words)
@@ -23,8 +24,11 @@ function checkWordIsStop(message) {
     stop_words.forEach((word, index) => {
         if (word !== '')  no_stop = no_stop && !message.toLowerCase().includes(word)
         console.log('check word ', word, no_stop)
+
+        if (!no_stop && word !== '') stop_word = word
     });
-    return !no_stop
+    console.log('checkword', message, stop_word)
+    return stop_word
 }
 
 function addNewStopWord(new_word) {
@@ -84,8 +88,9 @@ client.on('message', message => {
         if (message.from === katya) {
             checkMedia(message, igor)
             console.log('message.from', katya)
-            if (checkWordIsStop(message.body)) {
-                client.sendMessage(admin, 'ATTENTION!!! stop word from Katya in message: ' + message.body);
+            let stop_word = checkWordIsStop(message.body)
+            if (stop_word) {
+                client.sendMessage(admin, 'ATTENTION!!! stop word from Katya in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
                 client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
@@ -99,15 +104,17 @@ client.on('message', message => {
         else if (message.from === igor) {
             checkMedia(message, katya)
             console.log('message.from', igor)
-            if (checkWordIsStop(message.body)) {
-                client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ' + message.body);
+
+            let stop_word = checkWordIsStop(message.body)
+            if (stop_word) {
+                client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
                 client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
                 let mess = 'Igor: ' + message.body
                 client.sendMessage(katya, mess);
 
-                client.sendMessage('79884054121@c.us', mess);
+                client.sendMessage(superadmin, mess);
             }
         }
 
