@@ -4,8 +4,10 @@ const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 
 const admin = '79108257989@c.us'
+// const admin = '79024050778@c.us'
 const igor = '79611601191@c.us'
 const katya = '79301200905@c.us'
+const serg = '79024050778@c.us'
 
 const superadmin = '79884054121@c.us'
 
@@ -104,6 +106,21 @@ client.on('message', message => {
                 client.sendMessage('79884054121@c.us', mess);
             }
         }
+
+        // else if (message.from === serg) {
+        //     checkMedia(message, katya)
+        //     console.log('message.from', serg)
+        //     if (checkWordIsStop(message.body)) {
+        //         client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ', message.body);
+        //         client.sendMessage(serg, 'ATTENTION'+katya);
+        //     }
+        //     else {
+        //         let mess = 'Igor: ' + message.body
+        //         client.sendMessage(igor, mess);
+
+        //         client.sendMessage('79884054121@c.us', mess);
+        //     }
+        // }
         // else if (message.from === '79884054121@c.us') {
         //     let mess = 'Admin: ' + message.body
         //     client.sendMessage('79159975804@c.us', mess);
