@@ -40,7 +40,11 @@ function addNewStopWord(new_word) {
 const client = new Client(
     {
         authStrategy: new LocalAuth(),
-        puppeteer: { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }
+        puppeteer: { 
+            headless: true, 
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            executablePath: '/usr/bin/google-chrome-stable'
+        }
     }
 );
 
@@ -96,7 +100,7 @@ client.on('message', message => {
             checkMedia(message, katya)
             console.log('message.from', igor)
             if (checkWordIsStop(message.body)) {
-                client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ', message.body);
+                client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ' + message.body);
                 client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
