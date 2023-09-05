@@ -134,5 +134,5 @@ client.on('message', message => {
     }
 });
 
-// v1
+// v2
 client.initialize();
