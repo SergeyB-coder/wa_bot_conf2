@@ -96,7 +96,7 @@ client.on('message', message => {
                 client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
-                let mess = 'Katya: ' + message.body
+                let mess = '*Katya:* ' + message.body
                 client.sendMessage(igor, mess);
                 client.sendMessage(mustafa, mess);
 
@@ -115,7 +115,7 @@ client.on('message', message => {
                 client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
-                let mess = 'Igor: ' + message.body
+                let mess = '*Igor:* ' + message.body
                 client.sendMessage(katya, mess);
                 client.sendMessage(mustafa, mess);
 
@@ -129,11 +129,11 @@ client.on('message', message => {
 
             let stop_word = checkWordIsStop(message.body)
             if (stop_word) {
-                client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
+                client.sendMessage(admin, 'ATTENTION!!! stop word from Mustafa in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
                 client.sendMessage(superadmin, 'ATTENTION'+katya);
             }
             else {
-                let mess = 'Igor: ' + message.body
+                let mess = '*Mustafa:* ' + message.body
                 client.sendMessage(katya, mess);
                 client.sendMessage(igor, mess);
 
