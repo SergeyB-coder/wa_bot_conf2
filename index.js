@@ -8,6 +8,7 @@ const admin = '79108257989@c.us'
 const igor = '79611601191@c.us'
 const katya = '79301200905@c.us'
 const serg = '79024050778@c.us'
+const mustafa = '905327372393@c.us'
 
 const superadmin = '79024050778@c.us'
 
@@ -87,6 +88,7 @@ client.on('message', message => {
     if (is_message) {
         if (message.from === katya) {
             checkMedia(message, igor)
+            checkMedia(message, mustafa)
             console.log('message.from', katya)
             let stop_word = checkWordIsStop(message.body)
             if (stop_word) {
@@ -96,6 +98,7 @@ client.on('message', message => {
             else {
                 let mess = 'Katya: ' + message.body
                 client.sendMessage(igor, mess);
+                client.sendMessage(mustafa, mess);
 
                 client.sendMessage(superadmin, mess);
             }
@@ -103,6 +106,7 @@ client.on('message', message => {
         }
         else if (message.from === igor) {
             checkMedia(message, katya)
+            checkMedia(message, mustafa)
             console.log('message.from', igor)
 
             let stop_word = checkWordIsStop(message.body)
@@ -113,6 +117,25 @@ client.on('message', message => {
             else {
                 let mess = 'Igor: ' + message.body
                 client.sendMessage(katya, mess);
+                client.sendMessage(mustafa, mess);
+
+                client.sendMessage(superadmin, mess);
+            }
+        }
+        else if (message.from === mustafa) {
+            checkMedia(message, katya)
+            checkMedia(message, igor)
+            console.log('message.from', mustafa)
+
+            let stop_word = checkWordIsStop(message.body)
+            if (stop_word) {
+                client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
+                client.sendMessage(superadmin, 'ATTENTION'+katya);
+            }
+            else {
+                let mess = 'Igor: ' + message.body
+                client.sendMessage(katya, mess);
+                client.sendMessage(igor, mess);
 
                 client.sendMessage(superadmin, mess);
             }
@@ -141,5 +164,5 @@ client.on('message', message => {
     }
 });
 
-// v3
+// v3   
 client.initialize();
