@@ -1,168 +1,101 @@
-const fs = require('fs')
-const qrcode = require('qrcode-terminal');
+const fs = require('fs');
+const readline = require('readline');
+const { google } = require('googleapis');
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+const TOKEN_PATH = 'token.json';
 
-const { Client, LocalAuth } = require('whatsapp-web.js');
-
-const admin = '79108257989@c.us'
-// const admin = '79024050778@c.us'
-const igor = '79611601191@c.us'
-const katya = '79301200905@c.us'
-const serg = '79024050778@c.us'
-const mustafa = '905327372393@c.us'
-
-const superadmin = '79024050778@c.us'
-
-function getStopWords() {
-    return fs.readFileSync('./test.txt', 'utf8').toString().split('\n')
-}
-
-function checkWordIsStop(message) {
-    let stop_word = ''
-    console.log('checkWordIsStop', message)
-    const stop_words = getStopWords()
-    console.log('checkWordIsStop', stop_words)
-    let no_stop = true
-    stop_words.forEach((word, index) => {
-        if (word !== '')  no_stop = no_stop && !message.toLowerCase().includes(word)
-        console.log('check word ', word, no_stop)
-
-        if (!no_stop && word !== '') stop_word = word
+function getNewToken(oAuth2Client, callback) {
+    const authUrl = oAuth2Client.generateAuthUrl({
+      access_type: 'offline',
+      scope: SCOPES,
     });
-    console.log('checkword', message, stop_word)
-    return stop_word
+    console.log('Authorize this app by visiting this url:', authUrl);
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+    rl.question('Enter the code from that page here: ', (code) => {
+      rl.close();
+      oAuth2Client.getToken(code, (err, token) => {
+        if (err)
+          return console.error(
+            'Error while trying to retrieve access token',
+            err
+          );
+        oAuth2Client.setCredentials(token);
+        fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+          if (err) return console.error(err);
+          console.log('Token stored to', TOKEN_PATH);
+        });
+        callback(oAuth2Client);
+      });
+    });
+  }
+
+function authorize(credentials, callback) {
+    const { client_secret, client_id, redirect_uris } = credentials.installed;
+    const oAuth2Client = new google.auth.OAuth2(
+        client_id,
+        client_secret,
+        redirect_uris[0]
+    );
+
+    fs.readFile(TOKEN_PATH, (err, token) => {
+        if (err) return getNewToken(oAuth2Client, callback);
+        oAuth2Client.setCredentials(JSON.parse(token));
+        callback(oAuth2Client);
+    });
 }
 
-function addNewStopWord(new_word) {
-    fs.appendFile('./test.txt', '\n' + new_word.toLowerCase(), (err) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        console.log('success add new word: ', new_word)
-    })
-}
+fs.readFile('credentials.json', (err, content) => {
+    if (err) return console.log('Error loading client secret file:', err);
+    authorize(JSON.parse(content), (d) => {
 
-const client = new Client(
-    {
-        authStrategy: new LocalAuth(),
-        puppeteer: { 
-            headless: true, 
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: '/usr/bin/google-chrome-stable'
-        }
-    }
-);
-
-async function checkMedia (message, to) {
-    if(message.hasMedia) {
-        const media = await message.downloadMedia();
-        client.sendMessage(to, media);
-        client.sendMessage(superadmin, media);
-    }
-
-}
-
-client.on('qr', qr => {
-    qrcode.generate(qr, { small: true });
+    });
 });
 
-client.on('ready', () => {
-    console.log('Client is ready!');
-});
 
-client.on('message', message => {
-    console.log('message', message)
 
-    let is_message = true
-    if (message.from === admin) {
-        if (message.body.length > 3) {
-            if (message.body.slice(0, 3) === '*7#') {
-                is_message = false
-                const new_word = message.body.slice(3)
-                addNewStopWord(new_word)
-            }
-        }
-    }
 
-    
-    if (is_message) {
-        if (message.from === katya) {
-            checkMedia(message, igor)
-            checkMedia(message, mustafa)
-            console.log('message.from', katya)
-            let stop_word = checkWordIsStop(message.body)
-            if (stop_word) {
-                client.sendMessage(admin, 'ATTENTION!!! stop word from Katya in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
-                client.sendMessage(superadmin, 'ATTENTION'+katya);
-            }
-            else {
-                let mess = '*Katya:* ' + message.body
-                client.sendMessage(igor, mess);
-                client.sendMessage(mustafa, mess);
 
-                client.sendMessage(superadmin, mess);
-            }
 
-        }
-        else if (message.from === igor) {
-            checkMedia(message, katya)
-            checkMedia(message, mustafa)
-            console.log('message.from', igor)
 
-            let stop_word = checkWordIsStop(message.body)
-            if (stop_word) {
-                client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
-                client.sendMessage(superadmin, 'ATTENTION'+katya);
-            }
-            else {
-                let mess = '*Igor:* ' + message.body
-                client.sendMessage(katya, mess);
-                client.sendMessage(mustafa, mess);
+// const qrcode = require('qrcode-terminal');
 
-                client.sendMessage(superadmin, mess);
-            }
-        }
-        else if (message.from === mustafa) {
-            checkMedia(message, katya)
-            checkMedia(message, igor)
-            console.log('message.from', mustafa)
+// const { Client, LocalAuth } = require('whatsapp-web.js');
 
-            let stop_word = checkWordIsStop(message.body)
-            if (stop_word) {
-                client.sendMessage(admin, 'ATTENTION!!! stop word from Mustafa in message: ' + message.body + '\nCHAT - Deutz Vosda MMA: '+ stop_word);
-                client.sendMessage(superadmin, 'ATTENTION'+katya);
-            }
-            else {
-                let mess = '*Mustafa:* ' + message.body
-                client.sendMessage(katya, mess);
-                client.sendMessage(igor, mess);
 
-                client.sendMessage(superadmin, mess);
-            }
-        }
+// // const admin = '79024050778@c.us'
 
-        // else if (message.from === serg) {
-        //     checkMedia(message, katya)
-        //     console.log('message.from', serg)
-        //     if (checkWordIsStop(message.body)) {
-        //         client.sendMessage(admin, 'ATTENTION!!! stop word from Igor in message: ', message.body);
-        //         client.sendMessage(serg, 'ATTENTION'+katya);
-        //     }
-        //     else {
-        //         let mess = 'Igor: ' + message.body
-        //         client.sendMessage(igor, mess);
 
-        //         client.sendMessage('79884054121@c.us', mess);
-        //     }
-        // }
-        // else if (message.from === '79884054121@c.us') {
-        //     let mess = 'Admin: ' + message.body
-        //     client.sendMessage('79159975804@c.us', mess);
-        //     client.sendMessage('79611601191@c.us', mess);
-        //     client.sendMessage('79504460593@c.us', mess);
-        // }
-    }
-});
+// const client = new Client(
+//     {
+//         authStrategy: new LocalAuth(),
+//         puppeteer: { 
+//             headless: true, 
+//             args: ['--no-sandbox', '--disable-setuid-sandbox'],
+//             // executablePath: '/usr/bin/google-chrome-stable'
+//         }
+//     }
+// );
 
-// v3   
-client.initialize();
+
+
+// client.on('qr', qr => {
+//     qrcode.generate(qr, { small: true });
+// });
+
+// client.on('ready', () => {
+//     console.log('Client is ready!');
+// });
+
+// client.on('message', message => {
+//     console.log('message', message)
+
+
+// });
+
+// // v1 
+// client.initialize();
+
+console.log(9)
