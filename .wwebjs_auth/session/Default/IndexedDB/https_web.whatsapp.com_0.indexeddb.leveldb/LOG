@@ -1,12 +1,6 @@
-2023/09/05-10:34:06.687 53a4 Reusing MANIFEST C:\dev\whatsappbot\ws_bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/09/05-10:34:06.687 53a4 Recovering log #86
-2023/09/05-10:34:06.852 53a4 Reusing old log C:\dev\whatsappbot\ws_bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000086.log 
-2023/09/05-10:35:50.485 4cdc Level-0 table #93: started
-2023/09/05-10:35:50.524 4cdc Level-0 table #93: 1083768 bytes OK
-2023/09/05-10:35:50.528 4cdc Delete type=0 #86
-2023/09/05-10:35:55.500 4a20 Compacting 1@1 + 1@2 files
-2023/09/05-10:35:55.556 4a20 Generated table #94@1: 21331 keys, 929965 bytes
-2023/09/05-10:35:55.556 4a20 Compacted 1@1 + 1@2 files => 929965 bytes
-2023/09/05-10:35:55.558 4a20 compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/09/05-10:35:55.559 4a20 Delete type=2 #90
-2023/09/05-10:35:55.559 4a20 Delete type=2 #93
+2023/09/23-13:01:06.559 5a10 Reusing MANIFEST C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/09/23-13:01:06.560 5a10 Recovering log #140
+2023/09/23-13:01:06.751 5a10 Reusing old log C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000140.log 
+2023/09/23-13:03:45.935 3ebc Level-0 table #151: started
+2023/09/23-13:03:45.975 3ebc Level-0 table #151: 1199561 bytes OK
+2023/09/23-13:03:45.979 3ebc Delete type=0 #140
