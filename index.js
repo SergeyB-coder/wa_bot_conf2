@@ -32,11 +32,11 @@ const message_thank = `Спасибо, мы обязательно свяжем�
 const clientwa = new Client(
     {
         authStrategy: new LocalAuth(),
-        // puppeteer: {
-        //     headless: true,
-        //     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        //     executablePath: '/usr/bin/google-chrome-stable'
-        // }
+        puppeteer: {
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            // executablePath: '/usr/bin/google-chrome-stable'
+        }
     }
 );
 
