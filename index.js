@@ -135,6 +135,119 @@ clientwa.on('message', message => {
                 console.log(err);
               });
         }
+
+        else if (data_json[0].answer1 === '') {
+          client.update('phone', phone, { 'answer1': message.body } 
+            ).then(function(data) {
+              console.log('update answer1', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer2 === '') {
+          client.update('phone', phone, { 'answer2': message.body } 
+            ).then(function(data) {
+              console.log('update answer2', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer3 === '') {
+          client.update('phone', phone, { 'answer3': message.body } 
+            ).then(function(data) {
+              console.log('update answer3', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer4 === '') {
+          client.update('phone', phone, { 'answer4': message.body } 
+            ).then(function(data) {
+              console.log('update answer4', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer5 === '') {
+          client.update('phone', phone, { 'answer5': message.body } 
+            ).then(function(data) {
+              console.log('update answer5', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer6 === '') {
+          client.update('phone', phone, { 'answer6': message.body } 
+            ).then(function(data) {
+              console.log('update answer6', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer7 === '') {
+          client.update('phone', phone, { 'answer7': message.body } 
+            ).then(function(data) {
+              console.log('update answer7', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer8 === '') {
+          client.update('phone', phone, { 'answer8': message.body } 
+            ).then(function(data) {
+              console.log('update answer8', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer9 === '') {
+          client.update('phone', phone, { 'answer9': message.body } 
+            ).then(function(data) {
+              console.log('update answer9', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer10 === '') {
+          client.update('phone', phone, { 'answer10': message.body } 
+            ).then(function(data) {
+              console.log('update answer10', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer11 === '') {
+          client.update('phone', phone, { 'answer11': message.body } 
+            ).then(function(data) {
+              console.log('update answer11', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer12 === '') {
+          client.update('phone', phone, { 'answer12': message.body } 
+            ).then(function(data) {
+              console.log('update answer12', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer13 === '') {
+          client.update('phone', phone, { 'answer13': message.body } 
+            ).then(function(data) {
+              console.log('update answer13', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
+        else if (data_json[0].answer14 === '') {
+          client.update('phone', phone, { 'answer14': message.body } 
+            ).then(function(data) {
+              console.log('update answer14', data);
+            }, function(err){
+              console.log(err);
+            });
+        }
     }, function (err) {
         console.log(err);
     });
