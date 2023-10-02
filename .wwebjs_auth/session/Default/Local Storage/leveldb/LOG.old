@@ -1,3 +1,2 @@
-2023/09/28-21:46:28.953 5624 Reusing MANIFEST C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2023/09/28-21:46:28.954 5624 Recovering log #3
-2023/09/28-21:46:28.954 5624 Reusing old log C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Local Storage\leveldb/000003.log 
+2023/10/02-18:21:40.976 1f74 Creating DB C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Local Storage\leveldb since it was missing.
+2023/10/02-18:21:41.007 1f74 Reusing MANIFEST C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
