@@ -1,2 +1,3 @@
-2023/10/02-18:21:41.982 1f74 Creating DB C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Session Storage since it was missing.
-2023/10/02-18:21:42.028 1f74 Reusing MANIFEST C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Session Storage/MANIFEST-000001
+2023/10/02-18:26:57.025 172c Reusing MANIFEST C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Session Storage/MANIFEST-000001
+2023/10/02-18:26:57.026 172c Recovering log #3
+2023/10/02-18:26:57.026 172c Reusing old log C:\dev\whatsappBOTS\Conference\ws_bot\.wwebjs_auth\session\Default\Session Storage/000003.log 
