@@ -88,16 +88,15 @@ clientwa.on('message', message => {
                 console.log('update role', data);
 
                 clientwa.sendMessage(message.from, question_price)
-
               }, function(err){
                 console.log(err);
               });
         }
         else if (data_json[0].price === '') {
             client.update(
-                'phone', // column name
-                phone, // value to search for
-                { 'price': message.body } // object with updates
+                'phone', 
+                phone, 
+                { 'price': message.body } 
               ).then(function(data) {
                 console.log('update price', data);
 
@@ -111,7 +110,7 @@ clientwa.on('message', message => {
             client.update(
                 'phone', // column name
                 phone, // value to search for
-                { 'conditions': message.body } // object with updates
+                { 'conditions': message.body } 
               ).then(function(data) {
                 console.log('update conditions', data);
 
@@ -251,9 +250,6 @@ clientwa.on('message', message => {
     }, function (err) {
         console.log(err);
     });
-
-
-    // clientwa.sendMessage(message.from, question_name)
 });
 
 clientwa.initialize();
